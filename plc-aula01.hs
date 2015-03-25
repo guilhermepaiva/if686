@@ -34,10 +34,28 @@
  	| as == [] = 0
  	| otherwise = (head as) + sumList (tail as)
 
---dobrar os elementos de uma lista
-doubleList :: [Int] -> [Int]
-doubleList [] = []
-doubleList (n:ns) = (2 * n) : doubleList ns
+dobrar os elementos de uma lista
+doubleMyList :: [Int] -> [Int]
+doubleMyList [] = []
+doubleMyList (a:as) = (2 * a) : doubleList as
+
+--member verifica se um dado elemento esta na lista
+member :: [Int] -> Int -> Bool
+member as x
+	| x `elem` as = True
+	| otherwise = False
+
+
+--devolve o maior elemento de uma lista
+maiorLista :: [Int] -> Int
+maiorLista [] = minBound :: Int
+maiorLista [x] = x
+maiorLista (x:xs)
+	| x > maiorLista xs	= x
+	| otherwise	= maiorLista xs
+
+
+
 
 
 
