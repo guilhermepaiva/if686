@@ -23,3 +23,19 @@ myTakeWhile _ [] = []
 myTakeWhile f (a:as)
 	| f a = a : myTakeWhile f as
 	| otherwise = []
+
+
+newAllEqual :: Eq t => t -> t -> t -> Bool
+newAllEqual n m p
+	| (n == m) && (m == p) = True
+	| otherwise = False
+
+sort :: (Ord a) => [a] -> [a]
+sort [] = []
+sort (pivot:rest) = (sort [y | y <- rest, y < pivot]) ++ [pivot] ++ (sort [y | y <- rest, y >= pivot])
+
+{-
+agrupar :: Eq t => [[t]] -> [(t, Int)]
+agrupar [[]] = [(,)]
+agrupar [[t]] = [(t, map maximum t)]
+agrupar (a:as) = [(a, map maximum a) : agrupar as] -}
