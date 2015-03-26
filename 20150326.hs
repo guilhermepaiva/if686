@@ -12,7 +12,7 @@ get ((hashKey, hashValue):as) theKey
 put :: HashTable -> Integer -> String -> HashTable
 put as hashKey hashValue
 	| ((get as hashKey) == "Nops") = (hashKey, hashValue):as
-	| otherwise = as
+	| otherwise = as ++ [(hashKey, hashValue)]
 
 remove :: HashTable -> Integer -> HashTable
 remove [] _ = []
