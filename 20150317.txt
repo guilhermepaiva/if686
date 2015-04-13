@@ -1,0 +1,16 @@
+Primeiro Trabalho
+
+- O que é um paradigma?
+	É um padrão que uma linguagem de programação possui e que têm características em comum. São eles: concorrente, imperativa, funcional e orientado a objetos.
+
+- Quais são as características fundamentais do paradigma de programação funcional? Como ele se diferencia da programação imperativa?
+	O paradigma funcional é baseado em funções matemáticas com uma forte base teórica, enquanto que o paradigma imperativo é baseado na máquina de Turing que por sua vez enfativa a mudança de estados. No paradigma imperativo, as operações são realizadas e os resultados são armazenados em variáveis, enquanto que no paradigma funcional não possui estados ou comandos e não possui declaração explícita de variáveis. 
+
+- Quais são as vatagens do paradigma funcional, em contrapartida com o paradigma imperativo?
+	Paradimas funcionais se valem fortemente de recursão bem como de funções de alta ordem. 
+
+- Quais são as origens da programação funcional?
+	
+
+- Quais grandes empresas utilizam esse paradigma? Que tipo de sistema é desenvolvido usando linguagens funcionais?
+
