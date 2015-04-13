@@ -1,16 +1,17 @@
 Primeiro Trabalho
 
 - O que é um paradigma?
-	É um padrão que uma linguagem de programação possui e que têm características em comum. São eles: concorrente, imperativa, funcional e orientado a objetos.
+	É um padrão ou estilo que uma linguagem de programação possui e que têm características em comum. São eles: concorrente, imperativa, funcional e orientado a objetos. Lembrando ainda que as linguagens podem ser multiparadigmas (por exemplo Python) e podem ter apenas um único paradiga (no caso do Haskell).
 
 - Quais são as características fundamentais do paradigma de programação funcional? Como ele se diferencia da programação imperativa?
-	O paradigma funcional é baseado em funções matemáticas com uma forte base teórica, enquanto que o paradigma imperativo é baseado na máquina de Turing que por sua vez enfativa a mudança de estados. No paradigma imperativo, as operações são realizadas e os resultados são armazenados em variáveis, enquanto que no paradigma funcional não possui estados ou comandos e não possui declaração explícita de variáveis. 
+	O paradigma funcional é baseado em funções matemáticas (ou avaliações de funcões matemáticas) com uma forte base teórica, enquanto que o paradigma imperativo é baseado na máquina de Turing que por sua vez enfativa a mudança de estados. No paradigma imperativo, as operações são realizadas e os resultados são armazenados em variáveis, enquanto que no paradigma funcional não possui estados ou comandos e não possui declaração explícita de variáveis. 
 
 - Quais são as vatagens do paradigma funcional, em contrapartida com o paradigma imperativo?
-	Paradimas funcionais se valem fortemente de recursão bem como de funções de alta ordem. 
+	Paradimas funcionais se valem fortemente de recursão bem como de funções de alta ordem. A ordem na execução não é importante no paradigma funcional. E também ser lazy evaluation, que é uma técnica usada em programação para atrasar a computação até um ponto em que o resultado da computação é considerado suficiente, necessário.
 
 - Quais são as origens da programação funcional?
+	Enquanto que os demais paradigmas são fortemente baseados na Máquina de Turging, a programação funcional se baseia no Lambda cálculo, desenvolvido por Alonzo Church. Assim como a programação lógica, a programação funcional se desenvolveu a partir de programadores de IA. E a primeira linguagem no paradigma funcional foi LISP projetada por John McCarthy.
 	
 
 - Quais grandes empresas utilizam esse paradigma? Que tipo de sistema é desenvolvido usando linguagens funcionais?
-
+	Facebook, Twitter, Microsoft, Foursquare, ABN Anron Bank, AT&T. No Facebook se usa haskell internamente como uma ferramenta para manipular programaticamente um código PHP. O twitter usa Scala no seu backend. A Microsoft tem um sistema de serialização de produção. No ABN Anron Bank se utiliza para medição de riscos. Na AT&T é utilizado na divisão de segurança de redes para automatizar o processamento de queixas de abuso de internet. 
