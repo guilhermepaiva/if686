@@ -122,6 +122,7 @@ baseExemplo =
 	("Fernando", "Jonathan Strange & Mr. Norrell"),
 	("Fernando", "A Game of Thrones")]
 
+--funções sobre o banco de dados - consultas
 livros :: BancoDados -> Pessoa -> [Livro]
 livros [] _ = []
 livros (x:xs) p
@@ -139,6 +140,25 @@ emprestado [] _ = False
 emprestado (x:xs) l
 	| snd x == l = True
 	| otherwise = emprestado xs l
+
+qtdeEmprestimos :: BancoDados -> Pessoa -> Int
+qtdeEmprestimos [] _ = 0
+qtdeEmprestimos (x:xs) p
+	| fst x == p = 1 + qtdeEmprestimos xs p
+	| otherwise = qtdeEmprestimos xs p
+
+-- funções sobre o banco de dados - atualizações
+emprestar :: BancoDados -> Pessoa -> Livro -> BancoDados
+emprestar [] p l = [(p,l)]
+emprestar bd p l = (p,l) : bd
+
+devolver :: BancoDados -> Pessoa -> Livro -> BancoDados
+devolver [] p l = []
+devolver (x:xs) p l
+	| fst x == p && snd x == l = xs
+	| otherwise = devolver xs p l
+
+
 
 
 
