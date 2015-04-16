@@ -158,6 +158,23 @@ devolver (x:xs) p l
 	| fst x == p && snd x == l = xs
 	| otherwise = devolver xs p l
 
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (a:as) = quicksort ([x | x <- as, x <= a]) ++ [a] ++ quicksort ([x | x <- as, x > a])
+
+getWord :: String -> String
+getWord st = takeWhile (/= ' ') st
+
+dropWord :: String -> String
+dropWord st = dropWhile (/= ' ') st
+
+dropSpace :: String -> String
+dropSpace st = dropWhile (== ' ') st
+
+dropAllSpaces :: String -> String
+dropAllSpaces st = [x | x <- st, x /= ' ']
+
+
 
 
 
