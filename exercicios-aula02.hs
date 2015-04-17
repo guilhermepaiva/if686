@@ -174,6 +174,39 @@ dropSpace st = dropWhile (== ' ') st
 dropAllSpaces :: String -> String
 dropAllSpaces st = [x | x <- st, x /= ' ']
 
+type Word = String
+splitWords :: String -> [Word]
+splitWords [] = []
+splitWords st = [getWord st] ++ splitWords (dropSpace(dropWord st))
+
+type Line = [Word]
+myGetLine :: Int -> [Word] -> Line
+myGetLine 0 _ = []
+myGetLine i (a:as) = a : myGetLine (i-1) as  
+
+myDropLine :: Int -> [Word] -> [Word]
+myDropLine 0 _ = []
+myDropLine i (a:as) = as ++ myDropLine (i-1) as
+
+splitLines :: [Word] -> [Line]
+splitLines [] = []
+splitLines (a:as) = [a] : splitLines as
+
+fill :: String -> [Line]
+fill st = splitLines (splitWords st)
+
+joinWords :: [Word] -> String
+joinWords x
+	| x == [] = []
+    | otherwise = (head x) ++ (joinWords (tail x))
+
+joinLines :: [Line] -> String
+joinLines x 
+	| x == [] = []
+    | otherwise = (joinWords (head x)) ++ (joinLines (tail x))
+
+
+
 
 
 
