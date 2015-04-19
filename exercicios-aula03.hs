@@ -38,8 +38,17 @@ myDrop :: Int -> [t] -> [t]
 myDrop 0 as = as
 myDrop n (a:as) = myDrop (n-1) as
 
-takeAll :: (Eq t -> t -> Bool) -> [u] -> [u]
-takeAll f l = [x | x <- l, f l]
+myTakeWhile :: (a -> Bool) -> [a] -> [a]
+myTakeWhile f [] = []
+myTakeWhile f (x:xs)
+	| f x = x : myTakeWhile f xs
+	| otherwise = []
+
+myDropWhile :: (a -> Bool) -> [a] -> [a]
+myDropWhile _ [] = []
+myDropWhile f (x:xs)
+	| f x = myDropWhile f xs
+	| otherwise = x:xs
 
 
 --fatorial
@@ -53,6 +62,12 @@ allEqual :: Int -> Int -> Int -> Bool
 allEqual n m p 
 	| (n == m) && (m == p) = True
 	| otherwise = False
+
+member :: Eq t => [t] -> t -> Bool
+member [] _ = False
+member (a:as) b
+	| a == b = True
+	| otherwise = member as b
 
 --compara se quatro numeros sao iguais utilizando o allEqual
 all4Equal :: Int -> Int -> Int -> Int -> Bool
@@ -75,3 +90,9 @@ sumSquares x y = sqX + sqY
 		sqX = x * x
 		sqY = y * y
 
+agrupar :: (Eq t) => [[t]] -> [(t, Int)]
+agrupar x = count (concat x)
+
+count :: (Eq t) => [t] -> [(t, Int)]
+count [] = []
+count l@(x:xs) = [(x, length ([a | a <- l, a == x]))] ++ count [a | a <- l, a /= x]
