@@ -92,6 +92,22 @@ anotherAnd xs = fold (&&) xs
 anotherConcat :: [[t]] -> [t]
 anotherConcat xs = fold (++) xs
 
+anotherMaximum :: [Int] -> Int
+anotherMaximum xs = fold max xs
+
+foldFatorial :: Int -> Int
+foldFatorial n = fold (*) [1..n]
+
+myFoldr :: (t -> u -> u) -> u -> [t] -> u
+myFoldr f s [] = s
+myFoldr f s (a:as) = f a (myFoldr f s as) 
+
+myMember :: Int -> [Int] -> Bool
+myMember el [] = False
+myMember el (x:xs)
+	| (myFoldr (-) el [x]) == 0 = True
+	| otherwise = myMember el xs
+
 
 
 
