@@ -193,7 +193,24 @@ iter n f = (iter (n-1) f) . f
 mapfilter :: (Ord t) => [t] -> (t-> t) -> (t -> Bool) ->  [t]
 mapfilter list f g = [f e |e <- [n|n <- list, g n]]
 
+--expressões que definem funções
+addNum :: Int -> (Int -> Int)
+addNum n = h
+	where
+		h m = n + m
 
+lambdaAddNum :: Int -> (Int -> Int)
+lambdaAddNum n = (\m -> n + m)
+
+--exercícios
+lambdaListOfPairs :: [(Int, Int)] -> [Int]
+lambdaListOfPairs l = map (\(u,v) -> u) l
+
+lambdaLengthList :: [[Int]] -> Int -> [[Int]]
+lambdaLengthList l n = filter (\l -> ((length l) > n)) l
+
+--lambdaListNonDuplicate :: [[Int]] -> [Int]
+--lambdaListNonDuplicate l = filter (\l -> ) l
 
 
 
