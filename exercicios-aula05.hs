@@ -155,6 +155,45 @@ diff (a:as) (b:bs)
 	| myMember a (b:bs) = diff (b:bs) as
 	| otherwise = b : diff (a:as) bs
 
+--composição de funções
+splitLines :: [Word] -> [Line]
+splitLines [] = []
+splitLines (a:as) = [a] : splitLines as
+
+type Word = String
+splitWords :: String -> [Word]
+splitWords [] = []
+splitWords st = [getWord st] ++ splitWords (dropSpace(dropWord st))
+
+getWord :: String -> String
+getWord st = takeWhile (/= ' ') st
+
+dropWord :: String -> String
+dropWord st = dropWhile (/= ' ') st
+
+dropSpace :: String -> String
+dropSpace st = dropWhile (== ' ') st
+
+type Line = [Word]
+fill :: String -> [Line]
+fill st = splitLines (splitWords st)
+
+fillComposed :: String -> [Line]
+fillComposed = splitLines . splitWords
+
+twice :: (t -> t) -> (t -> t)
+twice f = f . f
+
+--ex.: twice succ 12 ... o resultado dá 14 , pois twice succ 12 = succ succ 12 = succ (succ 12) = succ 13 = 14
+
+iter :: Int -> (t -> t) -> (t -> t)
+iter 0 f = id
+iter n f = (iter (n-1) f) . f
+
+mapfilter :: (Ord t) => [t] -> (t-> t) -> (t -> Bool) ->  [t]
+mapfilter list f g = [f e |e <- [n|n <- list, g n]]
+
+
 
 
 
