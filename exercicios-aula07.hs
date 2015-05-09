@@ -30,9 +30,67 @@ tailFat n x = tailFat (n-1) (n*x)
 getWord :: String -> String
 getWord st = takeWhile (/= ' ') st
 
+dropWord :: String -> String
+dropWord st = dropWhile (/= ' ') st
+
+dropSpace :: String -> String
+dropSpace st = dropWhile (== ' ') st
+
+type Word = String
+splitWords :: String -> [Word]
+splitWords [] = []
+splitWords st = [getWord st] ++ splitWords (dropSpace(dropWord st))
+
 getWordCauda :: String -> String
 getWordCauda st = tailGetWord st ""
 tailGetWord [] st = st
 tailGetWord (a:as) st
 	| a == ' ' = st
 	| otherwise = tailGetWord as (st++[a])
+
+dropWordCauda :: String -> String
+dropWordCauda st = tailDropWord st ""
+tailDropWord [] st = st
+tailDropWord (a:as) st
+	| a == ' ' = as
+	| otherwise = tailDropWord as (st++[a])
+
+dropSpaceCauda :: String -> String
+dropSpaceCauda st = tailDropSpace st ""
+tailDropSpace [] st = st
+tailDropSpace (a:as) st
+	| a /= ' ' = (a:as)
+	| otherwise = tailDropSpace as (st++[a])
+
+splitWordsCauda :: String -> [String]
+splitWordsCauda st = tailSplitWords st ""
+tailSplitWords [] st = [st]
+tailSplitWords (a:as) st
+	| a == ' ' && (length st) > 0 = st : (tailSplitWords as "")
+	| a == ' ' && (length st) == 0 = (tailSplitWords as "")
+	| otherwise = tailSplitWords as (st++[a])
+
+foldrCauda :: (a -> b -> b) -> b -> [a] -> b
+foldrCauda _ n [] = n
+foldrCauda f n (a:as) = f a (foldrCauda f n as)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
