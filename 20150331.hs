@@ -35,3 +35,39 @@ lookAndSay' _ [] = []
 lookAndSay' n as
 	| n > 1 = lookAndSay' (n-1) (countAndRemove as)
 	| otherwise = as
+
+--Terceira Questão
+type Rotulo = Int
+type No = (Rotulo, [Rotulo])
+type Grafo = [No]
+type Arestas = (Rotulo, Rotulo)
+type Caminho = [Arestas]
+
+findRotulo :: [Rotulo] -> Rotulo -> Bool
+findRotulo [] _ = False
+findRotulo (a:as) r
+	| r == a = True
+	| otherwise = findRotulo as r
+
+-- função que dado um grafo e um rótulo retorna os rótulos adjacentes a ele
+getRotulosAdjacentes :: Grafo -> Rotulo -> [Rotulo]
+getRotulosAdjacentes (g:gs) r
+	| fst g == r = snd g
+	| otherwise = getRotulosAdjacentes gs r
+
+search :: Grafo -> Rotulo -> Rotulo -> Caminho
+search [] _ _ = []
+search (a:as) ri rf
+	| (getRotulosAdjacentes a ri /= []) = [(ri, fst a)] : getRotulosAdjacentes as ri
+	| otherwise = getRotulosAdjacentes as ri
+
+
+myGraph :: Grafo
+myGraph = [(1, [5,2,4,3]), (2, [5,1]), (3, [1,6]), (4, [7,1]), (5,[1,2]), (6, [3,7]), (7, [4,6])]
+
+
+
+
+
+
+
