@@ -6,6 +6,7 @@ public class Main {
 	public static int count;
 	static int n; //numero de threads
 	static int x; //ate onde o contador vai
+	public static int i;
 
 	public static void main(String[] args) {
 
@@ -15,12 +16,11 @@ public class Main {
 		System.out.println("Digite ate onde o contador vai:");
 		x = scanner.nextInt();
 		
-		count = 0;
+		count = 1;
 		
 		ArrayList<SimpleThread> arraySimpleThread = new ArrayList<SimpleThread> ();
 
-		for (int i = 0; i < x; i++){
-
+		for (i = 0; i <= x; i++){
 			SimpleThread simpleThread = new SimpleThread();
 			arraySimpleThread.add(simpleThread);
 			simpleThread.start();
