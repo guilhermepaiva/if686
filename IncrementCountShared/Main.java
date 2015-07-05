@@ -3,10 +3,9 @@ import java.util.ArrayList;
 
 public class Main {
 
-	public static int count;
+	public static int count = 0;
 	static int n; //numero de threads
 	static int x; //ate onde o contador vai
-	public static int i;
 
 	public static void main(String[] args) {
 
@@ -15,12 +14,11 @@ public class Main {
 		n = scanner.nextInt();
 		System.out.println("Digite ate onde o contador vai:");
 		x = scanner.nextInt();
-		
-		count = 1;
-		
+		scanner.close();
+
 		ArrayList<SimpleThread> arraySimpleThread = new ArrayList<SimpleThread> ();
 
-		for (i = 0; i <= n; i++){
+		for (int i = 0; i <= n; i++){
 			SimpleThread simpleThread = new SimpleThread();
 			arraySimpleThread.add(simpleThread);
 			simpleThread.start();
