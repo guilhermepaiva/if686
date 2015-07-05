@@ -20,7 +20,7 @@ public class Main {
 		
 		ArrayList<SimpleThread> arraySimpleThread = new ArrayList<SimpleThread> ();
 
-		for (i = 0; i <= x; i++){
+		for (i = 0; i <= n; i++){
 			SimpleThread simpleThread = new SimpleThread();
 			arraySimpleThread.add(simpleThread);
 			simpleThread.start();
