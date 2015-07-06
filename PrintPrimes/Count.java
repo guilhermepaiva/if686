@@ -7,6 +7,12 @@ public class Count {
 	}
 
 	public long getAndIncrement() {
-		return value++;
+		//return value++;
+		long temp;
+		synchronized (this){
+			temp = value;
+			value = temp + 1;
+		}
+		return temp;
 	}
 }

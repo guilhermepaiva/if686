@@ -2,13 +2,11 @@ import java.lang.Thread;
 
 public class SimpleThread extends Thread {
 
-	Count count =  new Count(1);
-
 	public void run() {
 		long j = 0;
 
 		while (j <= 100) {
-			j = count.getAndIncrement();
+			j = Main.count.getAndIncrement();
 			if (isPrime(j)){
 				System.out.println(j);
 			}
