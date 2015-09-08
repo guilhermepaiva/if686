@@ -1,3 +1,5 @@
+import Data.Maybe
+
 square :: Int -> Int
 square x = x * x
 
@@ -188,6 +190,38 @@ insertNode (Node x a b) n = if n >= x then (Node x a (insertNode b n))
 
 createTree :: (Ord t) => [t] -> (Tree t -> t -> Tree t) -> Tree t
 createTree li _ = foldr (\x t -> insertNode t x) (NilT) (reverse li)
+
+-- Monads
+
+safeDiv :: Integral t => Maybe t -> Maybe t -> Maybe t
+safeDiv _ Nothing = Nothing
+safeDiv Nothing _ = Nothing
+safeDiv (Just x) (Just y)
+	| y /= 0 = Just (x `div` y)
+	| otherwise = Nothing
+
+putNTimes :: Int -> String -> IO ()
+putNTimes n str 
+	= if n <= 1
+		then putStr str
+		else do putStr str 
+			putNTimes (n-1) str
+
+merge [] ys = ys
+merge xs [] = xs
+merge (x:xs) (y:ys) = if x <= y
+                      then x : merge xs (y:ys)
+                      else y : merge (x:xs) ys
+
+mergesort [] = []
+mergesort [x] = [x]
+mergesort xs = let (as, bs) = splitAt (length xs `quot` 2) xs
+               in merge (mergesort as) (mergesort bs)
+
+
+
+						
+
 
 
 
