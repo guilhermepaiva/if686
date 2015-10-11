@@ -104,7 +104,23 @@ resTesteExp1 = eval (\x -> x) testeExp1
 testeExp2 = Binp (Litp "6") Soma (Binp (Litp "6") Div (Litp "2"))
 resTesteExp2 = eval (\x -> (read x)) testeExp2
 
+instance Show Expressao where
+	show = showExpressao
 
+instance Show OpBinario where
+	show Soma = " + "
+	show Sub = " - "
+	show Mul = " * "
+	show Div = " / "
+
+instance Show OpUnario where
+	show Pos = "+"
+	show Neg = "-"
+
+instance Show t => Show (Expp t) where
+    show (Litp t) = show t
+    show (Unp op e) = show op ++ "(" ++ show e ++ ")"
+    show (Binp e op f) =  "(" ++ show e ++ show op ++ show f ++ ")"
 
 
 
