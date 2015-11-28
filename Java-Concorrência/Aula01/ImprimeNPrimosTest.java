@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class ImprimeNPrimosTest {
 
@@ -13,15 +14,24 @@ public class ImprimeNPrimosTest {
 		Scanner scannerX = new Scanner(System.in);
 		int x = scannerX.nextInt();
 
+		ArrayList<Thread> threadsList = new ArrayList<Thread>();
+
+		
+
 		for (int i = 0; i < x; i++){
+			
 			Thread t = new ImprimeNPrimos();
 			t.start();
+		}
+
+		for (Thread t : threadsList){
 			try {
-			t.join();
+				t.join();
 			}
 			catch (InterruptedException e) {}
 		}
 
+		
 		
 
 	}
