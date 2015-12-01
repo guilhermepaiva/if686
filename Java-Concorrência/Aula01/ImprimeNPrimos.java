@@ -1,14 +1,16 @@
 public class ImprimeNPrimos extends Thread {
 
 	public void run () {
-		for (int i = 1; i <= ImprimeNPrimosTest.n; i++){
-			if (testaPrimalidade(i) == true){
-				System.out.println(i);
+		while (ImprimeNPrimosTest.sharedCount <= ImprimeNPrimosTest.n){
+			if (testaPrimalidade(ImprimeNPrimosTest.sharedCount) == true){
+				System.out.println(ImprimeNPrimosTest.sharedCount);
 			}
+			ImprimeNPrimosTest.sharedCount++;
 		}
+		
 	}
 
-	public boolean testaPrimalidade (int x) {
+	private boolean testaPrimalidade (int x) {
 		int count = 0;
 		for (int i = 1; i <= x; i++){
 			if (x%i == 0){

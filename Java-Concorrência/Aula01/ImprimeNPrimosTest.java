@@ -4,6 +4,7 @@ import java.util.ArrayList;
 public class ImprimeNPrimosTest {
 
 	public static int n;
+	public static int sharedCount = 1;
 
 	public static void main(String[] args) {
 		System.out.println("Digite o argumento N (primos a serem impressos de 1 a N):");
@@ -16,12 +17,12 @@ public class ImprimeNPrimosTest {
 
 		ArrayList<Thread> threadsList = new ArrayList<Thread>();
 
-		
 
 		for (int i = 0; i < x; i++){
 			
-			Thread t = new ImprimeNPrimos();
+			Thread t = new Thread(new ImprimeNPrimos());
 			t.start();
+			threadsList.add(t);
 		}
 
 		for (Thread t : threadsList){
@@ -30,9 +31,5 @@ public class ImprimeNPrimosTest {
 			}
 			catch (InterruptedException e) {}
 		}
-
-		
-		
-
 	}
 }
