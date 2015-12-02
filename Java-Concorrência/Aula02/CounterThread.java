@@ -1,11 +1,9 @@
 public class CounterThread extends Thread {
 
-	Counter counter = new Counter (1); // compartilhado
-
 	public void run () {
 		long j = 0;
 		while (j < 10) {
-			j = counter.getAndIncrement();
+			j = CounterMain.counter.getAndIncrement();
 			if (isPrime(j)) {
 				System.out.println(j);
 			}
@@ -27,4 +25,5 @@ public class CounterThread extends Thread {
 			return false;
 		}
 	}
+
 }

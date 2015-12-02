@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class CounterMain {
 
+	public static Counter counter = new Counter(1);
+
 	public static void main(String[] args) {
 
 		ArrayList<CounterThread> arrayCounterThread = new ArrayList<CounterThread>();
