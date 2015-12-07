@@ -1,0 +1,28 @@
+											::: Falhas de vivacidade: livelock, deadlock e starvation. :::
+
+	Vivacidade quer dizer que em algum momento o programa vai para outro estado. E temos falhas de vivacidade (liveness) como: deadlock, starvation e
+livelock. 
+
+-> Deadlock: duas ou mais threads são bloqueadas para sempre, uma esperando pela outra, ou as threas estão esperando por um evento que nunca irá acontecer.
+Ex1.: Duas pessoas desenhando um diagrama onde se usa uma régua e um lápis; cada uma pega um recurso, uma pega a régua e a outra o lápis, e as duas são
+teimosas e não largam o recurso.
+
+Ex2.: Uma thread t1 está aguardando a liberação de um recurso que a thread t2 obtém e a thread t2 está aguardando um recurso que a thread t1 obtém.
+
+        t1 --->   R2
+         /\       |
+         |        |
+         |       \/
+        R1 <---  t2 
+
+- Condições necessárias (mas não suficientes) para ocorrência de deadlocks:
+
+Obs.: Todas essas condições devem ocorrer simultaneamente para que o deadlock ocorra; se uma dessas condições não ocorrer, não haverá deadlock.
+
+1. Exclusão mútua: apenas um processo com posse de cada recurso, ou seja, cada recurso ou está alocado a um processo ou está disponível;
+2. Segura e espera: um processo pode adquirir outros recursos enquanto segura um;
+3. Sem preempção: não é possível remover um recurso de um processo a força, os processos precisam liberar seus recursos explicitamente;
+4. Espera circular: um processo depende dos recursos de outro e vice versa.
+
+-> Starvation: situação na qual uma thread não tem acesso a um recurso compartilhado (não pode prosseguir sua execução). Acontece quando um recurso compartilhado não está disponível por um longo período de tempo.
+
