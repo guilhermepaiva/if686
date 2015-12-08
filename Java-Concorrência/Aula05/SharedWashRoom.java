@@ -66,7 +66,7 @@ class MainThread extends Thread {
 		while (manO != 0 || womanO != 0 || !SharedWashRoom.noMoreThreads){
 			if (manO == 0){
 				genre = false;
-			} else if (womanO != 0){
+			} else if (womanO == 0){
 				genre = true;
 			} else {
 				if (manO > 2*womanO) genre = true;
